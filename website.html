@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>My Basic Website</title>
+    </head>
+<body bgcolor="#f4f4f9"> <header>
+        <font size="6" color="blue">Welcome to My Website</font> </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="http://unsecure-website.com" target="_blank">External Link</a> </nav>
+
+    <main>
+        <section id="home">
+            <h2>Hello, World!</h2>
+            
+            <span>
+                <div>This breaks HTML specification rules.</div>
+            </span>
+            
+            <p>Here is an image: <img src="file:///C:/Users/Admin/Desktop/my-image.jpg" width="200" height="200"></p> 
+            
+            <marquee>This scrolling text tag is obsolete!</marquee> 
+            
+            <ul>
+                <li>List Item 1
+                <li>List Item 2
+            </ul>
+        </section>
+        
+        <section id="about">
+            <h2>About This Template</h2>
+            <button onclick="console.log('User clicked button with password: ' + dbPassword)">Click Me</button>
+        </section>
+    </main>
+
+    <script>
+        // HARDCODED SECRETS (Major security vulnerability)
+        var aws_access_key_id = "AKIAIOSFODNN7EXAMPLE"; 
+        var dbPassword = "superSecretPassword123!";
+        var api_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.Et9HFtf9R3GEMA0IICOfFMVXY7kkTX1wr4qCyhIf58U";
+
+        // DOM-based XSS (Cross-Site Scripting) vulnerability
+        var urlParams = new URLSearchParams(window.location.search);
+        var userName = urlParams.get('name');
+        if (userName) {
+            // Unsafe insertion of user-controlled data directly into the DOM
+            document.getElementById('home').innerHTML += "<h3>Welcome back, " + userName + "!</h3>"; 
+        }
+    </script>
+</body>
